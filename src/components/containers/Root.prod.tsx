@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'mobx-react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { App } from './App';
 import { store } from '../../store';
 
@@ -9,7 +9,7 @@ export class Root extends React.Component<{}, null> {
         return (
             <Provider store={store}>
                 <BrowserRouter>
-                    <App />
+                    <Route exact={true} path="/" component={App} />
                 </BrowserRouter>
             </Provider>
         );

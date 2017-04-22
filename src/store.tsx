@@ -24,11 +24,13 @@ export const store = observable({
         store.id = id;
         return {};
     }),
+
     memberType: 'educator',
     setMemberType: action.bound(function _setMemberType(type: string) {
         store.memberType = type;
         return {};
     }),
+
     signInIsOpen: false,
     closeSignIn: action.bound(function _closeSignIn() {
         store.signInIsOpen = false;
@@ -38,6 +40,7 @@ export const store = observable({
         store.signInIsOpen = true;
         return {};
     }),
+
     registerIsOpen: false,
     closeRegister: action.bound(function _closeRegister() {
         store.registerIsOpen = false;
@@ -47,6 +50,7 @@ export const store = observable({
         store.registerIsOpen = true;
         return {};
     }),
+    
     matchProfContIsOpen: false,
     closeMatchProfCont: action.bound(function _closeFillMatchProfile() {
         store.matchProfContIsOpen = false;
