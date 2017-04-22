@@ -9,7 +9,7 @@ export class MainMenu extends React.Component<any, any> {
     iconbutton() {
         return (
             <IconButton><MenuIcon color="#fff" /></IconButton>
-        )
+        );
     }
 
     render() {

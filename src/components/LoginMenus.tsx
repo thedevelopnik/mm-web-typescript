@@ -5,16 +5,12 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { Link, withRouter } from 'react-router-dom';
 import FaceIcon from 'material-ui/svg-icons/action/face';
-// import RegisterForm from '../../register/register-form.js';
+import { registerForm as RegisterForm } from './RegisterForm';
 // import SignInForm from '../../sign-in/signin-form.js';
 import { inject, observer } from 'mobx-react';
 import axios from 'axios';
 
-@observer
-@inject('store')
-export class Login extends React.Component<any, any> {
-    static muiName = 'Login';
-
+export class Login extends React.Component<any, void> {
     render() {
         return (
             <div>
@@ -48,23 +44,26 @@ export class Login extends React.Component<any, any> {
                     </MenuItem>
                 </IconMenu>
                 {/*<SignInForm />*/}
-                {/*<RegisterForm />*/}
+                <RegisterForm />
             </div>
         );
     }
 }
 
-export const $1 = Login;
+export const $1 = inject('store')(observer(Login));
 
-@observer
 @inject('store')
+@observer
 class Logged extends React.Component<any, any> {
     handleSignOut = () => {
         return axios.get('/api/logout')
         .then(res => {
-            console.log(res);
-            this.props.history.push('/');
-            this.props.store.clearUser();
+            if (res.status === 200) {
+                this.props.history.push('/');
+                this.props.store.clearUser();
+            } else {
+                alert(res.statusText);
+            }
         });
     }
 
@@ -73,18 +72,18 @@ class Logged extends React.Component<any, any> {
             <IconMenu
                 {...this.props}
                 iconButtonElement={
-                    <IconButton><FaceIcon color='#fff' /></IconButton>
+                    <IconButton><FaceIcon color="#fff" /></IconButton>
                 }
                 targetOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
             >
                 <Link to={`/profile`}>
-                    <MenuItem primaryText='My Profile' />
+                    <MenuItem primaryText="My Profile" />
                 </Link>
                 <MenuItem
-                    primaryText='Sign out'
+                    primaryText="Sign out"
                     onTouchTap={this.handleSignOut}
-                    data-test='button-sign-out'
+                    data-test="button-sign-out"
                 />
             </IconMenu>
         );
