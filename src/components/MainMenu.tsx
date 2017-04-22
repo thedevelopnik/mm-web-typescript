@@ -5,6 +5,7 @@ import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import IconButton from 'material-ui/IconButton';
 import { Link } from 'react-router-dom';
 
+// tslint:disable-next-line:no-any
 export class MainMenu extends React.Component<any, any> {
     iconbutton() {
         return (

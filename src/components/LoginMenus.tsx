@@ -10,6 +10,7 @@ import { registerForm as RegisterForm } from './RegisterForm';
 import { inject, observer } from 'mobx-react';
 import axios from 'axios';
 
+// tslint:disable-next-line:no-any
 export class Login extends React.Component<any, void> {
     render() {
         return (
@@ -52,8 +53,7 @@ export class Login extends React.Component<any, void> {
 
 export const $1 = inject('store')(observer(Login));
 
-@inject('store')
-@observer
+// tslint:disable-next-line:no-any
 class Logged extends React.Component<any, any> {
     handleSignOut = () => {
         return axios.get('/api/logout')
@@ -90,4 +90,4 @@ class Logged extends React.Component<any, any> {
     }
 }
 
-export const $2 = withRouter(Logged);
+export const $2 = withRouter(inject('store')(observer(Logged)));

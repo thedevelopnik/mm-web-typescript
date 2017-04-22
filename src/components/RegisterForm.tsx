@@ -9,6 +9,7 @@ import * as validator from 'validator';
 import * as passValidator from 'password-validator';
 import axios from 'axios';
 
+// tslint:disable-next-line:no-any
 const schema: any = new passValidator();
 
 schema
@@ -25,6 +26,7 @@ schema
     .has()
     .symbols();
 
+// tslint:disable-next-line:no-any
 const styles: any = {
     title: {
         textAlign: 'center'
@@ -60,6 +62,7 @@ interface NewMemberResData {
     memberType: string;
 }
 
+// tslint:disable-next-line:no-any
 class RegisterForm extends React.Component<any, SignUpObject> {
     state = {
         memberType: 'educator',
@@ -202,7 +205,6 @@ class RegisterForm extends React.Component<any, SignUpObject> {
     }
 
     render() {
-        console.log(this.props.store.registerIsOpen);
         const actions = [
             (
                 <FlatButton

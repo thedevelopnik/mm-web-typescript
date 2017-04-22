@@ -3,7 +3,8 @@ import { $2 as Logged, $1 as Login } from './LoginMenus';
 import { MainMenu } from './MainMenu';
 import AppBar from 'material-ui/AppBar';
 
-export class Header extends React.Component<any, any> {
+// tslint:disable-next-line:no-any
+export class Header extends React.Component<any, {logged: boolean}> {
     state = {
         logged: false
     };
