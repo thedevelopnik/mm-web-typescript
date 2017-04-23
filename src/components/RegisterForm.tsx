@@ -49,8 +49,6 @@ interface SignUpObject {
     lastNameError: string | boolean;
     email: string;
     emailError: string | boolean;
-    displayName: string;
-    displayNameError: string | boolean;
     password: string;
     passError: string | boolean;
     confirmPassword: string;
@@ -72,8 +70,6 @@ class RegisterForm extends React.Component<any, SignUpObject> {
         lastNameError: false,
         email: '',
         emailError: false,
-        displayName: '',
-        displayNameError: false,
         password: '',
         passError: false,
         confirmPassword: '',
@@ -85,16 +81,16 @@ class RegisterForm extends React.Component<any, SignUpObject> {
             this.state.firstNameError ||
                 this.state.lastNameError ||
                 this.state.emailError ||
-                this.state.displayNameError ||
                 this.state.passError ||
                 this.state.confPassError
         ) {
             return;
         }
-        return axios.post('/api/new-user', this.state)
+        return axios.post('http://localhost:3001/api/v1/auth/new-user', this.userForApi())
         .then((res) => {
             const data = res.data as NewMemberResData;
             this.props.store.setId(data.id);
+            // Do we need to pass this back? We already have it no?
             this.props.store.setMemberType(data.memberType);
             this.props.store.closeRegister();
             this.props.history.push('/profile');
@@ -137,20 +133,6 @@ class RegisterForm extends React.Component<any, SignUpObject> {
         this.setState({
             lastName: value,
             lastNameError: false
-        });
-    }
-
-    handleDisplayNameChange = (event: React.FormEvent<{}>, value: string) => {
-        if (value === '' || value === undefined || value === null) {
-            this.setState({
-                displayNameError: 'Display name is required',
-                displayName: value
-            });
-            return;
-        }
-        this.setState({
-            displayName: value,
-            displayNameError: false
         });
     }
 
@@ -296,17 +278,6 @@ class RegisterForm extends React.Component<any, SignUpObject> {
                               />
                               <TextField
                                   className="half-width"
-                                  hintText="Display Name"
-                                  onChange={this.handleDisplayNameChange}
-                                  data-test="field-display-name"
-                                  errorText={
-                                      this.state.displayNameError
-                                          ? this.state.displayNameError
-                                          : null
-                                  }
-                              />
-                              <TextField
-                                  className="half-width"
                                   hintText="Password"
                                   type="password"
                                   onChange={this.handlePasswordChange}
@@ -357,17 +328,6 @@ class RegisterForm extends React.Component<any, SignUpObject> {
                               />
                               <TextField
                                   className="half-width"
-                                  hintText="Display Name"
-                                  onChange={this.handleDisplayNameChange}
-                                  data-test="field-display-name"
-                                  errorText={
-                                      this.state.displayNameError
-                                          ? this.state.displayNameError
-                                          : null
-                                  }
-                              />
-                              <TextField
-                                  className="half-width"
                                   hintText="Password"
                                   type="password"
                                   onChange={this.handlePasswordChange}
@@ -395,6 +355,22 @@ class RegisterForm extends React.Component<any, SignUpObject> {
                 </Dialog>
             </div>
         );
+    }
+
+    private userForApi() {
+        if (this.state.memberType === 'educator') {
+            return {
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email,
+                password: this.state.password,
+            };
+        }
+        return {
+            name: this.state.firstName,
+            email: this.state.email,
+            password: this.state.password,
+        };
     }
 }
 
