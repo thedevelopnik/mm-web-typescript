@@ -31,7 +31,7 @@ export const store = observable({
         return {};
     }),
 
-    signInIsOpen: false,
+    signInIsOpen: true,
     closeSignIn: action.bound(function _closeSignIn() {
         store.signInIsOpen = false;
         return {};

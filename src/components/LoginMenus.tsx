@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import { Link, withRouter } from 'react-router-dom';
 import FaceIcon from 'material-ui/svg-icons/action/face';
 import { registerForm as RegisterForm } from './RegisterForm';
-// import SignInForm from '../../sign-in/signin-form.js';
+import SignInForm from './SignInForm';
 import { inject, observer } from 'mobx-react';
 import axios from 'axios';
 
@@ -44,7 +44,7 @@ export class Login extends React.Component<any, void> {
                         />
                     </MenuItem>
                 </IconMenu>
-                {/*<SignInForm />*/}
+                <SignInForm {...this.props} />
                 <RegisterForm />
             </div>
         );
