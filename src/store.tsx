@@ -18,7 +18,7 @@ export interface Store {
     setMemberType: (type: string) => {};
 }
 
-export const store = observable({
+export const store: Store = observable({
     id: 0,
     setId: action.bound(function _setId(id: number) {
         store.id = id;
@@ -31,7 +31,7 @@ export const store = observable({
         return {};
     }),
 
-    signInIsOpen: true,
+    signInIsOpen: false,
     closeSignIn: action.bound(function _closeSignIn() {
         store.signInIsOpen = false;
         return {};

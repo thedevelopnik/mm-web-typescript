@@ -1,4 +1,4 @@
-import { Store } from './store';
+import { Store } from './Store';
 export interface State { };
 
 export interface Props {

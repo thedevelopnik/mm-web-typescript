@@ -4,8 +4,9 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { inject, observer } from 'mobx-react';
 import * as validator from 'validator';
-import axios from 'axios';
+import axios, { AxiosResponse} from 'axios';
 import { Store } from '../Store';
+import { CurrentUser } from '../CurrentUser';
 
 const styles = {
   title: {
@@ -34,6 +35,7 @@ export interface LoginState {
 
 export interface Props {
   store: Store;
+  currentUser: CurrentUser;
 }
 
 class SignInForm extends React.Component<Props, LoginState> {
@@ -54,8 +56,8 @@ class SignInForm extends React.Component<Props, LoginState> {
       data: this.loginDetails,
       withCredentials: true,
     })
-      .then(res => {
-        console.log(res.data); // tslint:disable-line
+      .then((res: AxiosResponse) => {
+        this.props.currentUser.;
       })
       .catch((error: string) => {
         this.setState({ passError: 'Invalid email or password' });
@@ -156,4 +158,4 @@ class SignInForm extends React.Component<Props, LoginState> {
   }
 }
 
-export default inject('store')(observer(SignInForm));
+export default inject('currentUser', 'store')(observer(SignInForm));
