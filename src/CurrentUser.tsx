@@ -1,5 +1,7 @@
-import { action, observable } from 'mobx';
+import { action, observable, useStrict } from 'mobx';
 import { merge } from 'ramda';
+
+useStrict(true);
 
 export interface MatchingProfile {
     ageRanges?: number[];
@@ -30,21 +32,37 @@ export interface Profile {
     description?: string;
 }
 
-export interface CurrentUser {
-    matchingProfile: MatchingProfile;
-    profile: Profile | null;
-    updateMatchingProfile: () => {};
+export interface Match {
+    id: number;
+    percentage: number;
+    myConfirmation: boolean;
+    theirConfirmation: boolean;
+    displayName: string;
+    avatarUrl: string;
+    description: string;
+}
+
+export interface User {
+    matchingProfiles: MatchingProfile[];
+    profile: Profile;
+    matches: Match[];
+}
+
+export interface CurrentUser extends User {
+    mpIndex: number;
+    profile: Profile;
+    loadInitialUser: (user: User) => {};
+    updateMatchingProfile: (newProps: MatchingProfile, index?: number) => {};
+    pushToMatchProfileArray: (name: string, value: string | number, index?: number) => {};
+    removeFromMatchProfileArray: (name: string, value: string | number, index?: number) => {};
+    updateProfile: (profile: Profile) => {};
+    clearUser: () => {};
 }
 
 export const currentUser: CurrentUser = observable({
-    profile: {
-        displayName: '',
-        name: '',
-        active: true,
-        avatarUrl: '',
-        description: '',
-    },
-    matchingProfile: {
+    mpIndex: 0,
+    matches: [],
+    matchingProfiles: [{
         ageRanges: [],
         ageRangesWgt: 10,
         cals: [],
@@ -63,28 +81,54 @@ export const currentUser: CurrentUser = observable({
         traitsWgt: 10,
         states: [],
         statesWgt: 10
+    }],
+    profile: {
+        displayName: '',
+        name: '',
+        active: true,
+        avatarUrl: '',
+        description: '',
     },
 
-    updateMatchingProfile: action.bound(function _updateMatchingProfile(newProps: MatchingProfile) {
-        currentUser.matchingProfile = merge(currentUser.matchingProfile, newProps);
+    loadInitialUser: action.bound(function _loadInitialUser({ matches, matchingProfiles, profile}: User) {
+        currentUser.matches = matches;
+        if (matchingProfiles.length) {
+            currentUser.matchingProfiles = matchingProfiles;
+        }
+        currentUser.profile = profile;
         return {};
     }),
-    pushToMatchProfileArray: action.bound(function _pushToMatchProfileArray(name: string, value: string | number) {
-        currentUser.matchingProfile[name].push(value);
+
+    updateMatchingProfile: action.bound(function _updateMatchingProfile(newProps: MatchingProfile, index: number = 0) {
+        currentUser.matchingProfiles[index] = merge(currentUser.matchingProfiles[index], newProps);
         return {};
     }),
+
+    pushToMatchProfileArray: action.bound(
+        function _pushToMatchProfileArray(name: string, value: string | number, index: number = 0) {
+            currentUser.matchingProfiles[index][name].push(value);
+            return {};
+        }
+    ),
     removeFromMatchProfileArray: action.bound(
-        function _removeFromMatchProfileArray(name: string, value: string | number) {
-            currentUser.matchingProfile[name] = currentUser.matchingProfile[name]
+        function _removeFromMatchProfileArray(name: string, value: string | number, index: number = 0) {
+            currentUser.matchingProfiles[index][name] = currentUser.matchingProfiles[index][name]
                 .filter((e: string | number) => e !== value);
             return {};
-    }),
+        }
+    ),
     updateProfile: action.bound(function _setCurrentUserProfile(profile: Profile) {
         currentUser.profile = merge(currentUser.profile, profile);
         return {};
     }),
     clearUser: action.bound(function _clearUser() {
-        currentUser.profile = null;
+        currentUser.profile = {
+            displayName: '',
+            name: '',
+            active: true,
+            avatarUrl: '',
+            description: '',
+        };
         return {};
     })
 });

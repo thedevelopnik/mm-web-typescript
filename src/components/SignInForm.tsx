@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react';
 import * as validator from 'validator';
 import axios, { AxiosResponse} from 'axios';
 import { Store } from '../Store';
-import { CurrentUser } from '../CurrentUser';
+import { User, CurrentUser } from '../CurrentUser';
 
 const styles = {
   title: {
@@ -56,12 +56,13 @@ class SignInForm extends React.Component<Props, LoginState> {
       data: this.loginDetails,
       withCredentials: true,
     })
-      .then((res: AxiosResponse) => {
-        this.props.currentUser.;
-      })
-      .catch((error: string) => {
-        this.setState({ passError: 'Invalid email or password' });
-      });
+    .then((res: AxiosResponse) => {
+      this.props.currentUser.loadInitialUser(res.data as User);
+      this.props.store.closeSignIn();
+    })
+    .catch((error: string) => {
+      this.setState({ passError: 'Invalid email or password' });
+    });
     }
 
   handleEmailChange = (event: React.FormEvent<{}>, value: string) => {
