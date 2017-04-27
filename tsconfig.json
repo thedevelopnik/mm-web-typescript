@@ -3,7 +3,7 @@
     "outDir": "build",
     "module": "commonjs",
     "target": "es5",
-    "lib": ["es6", "dom"],
+    "lib": ["es7", "dom"],
     "experimentalDecorators": true,
     "sourceMap": true,
     "allowJs": true,
