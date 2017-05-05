@@ -6,9 +6,9 @@ import MenuItem from 'material-ui/MenuItem';
 import { Link, withRouter } from 'react-router-dom';
 import FaceIcon from 'material-ui/svg-icons/action/face';
 import { registerForm as RegisterForm } from './RegisterForm';
-// import SignInForm from '../../sign-in/signin-form.js';
+import SignInForm from './SignInForm';
 import { inject, observer } from 'mobx-react';
-import axios from 'axios';
+import axios, { AxiosResponse, AxiosError } from 'axios';
 
 // tslint:disable-next-line:no-any
 export class Login extends React.Component<any, void> {
@@ -44,7 +44,7 @@ export class Login extends React.Component<any, void> {
                         />
                     </MenuItem>
                 </IconMenu>
-                {/*<SignInForm />*/}
+                <SignInForm {...this.props} />
                 <RegisterForm />
             </div>
         );
@@ -56,14 +56,16 @@ export const $1 = inject('store')(observer(Login));
 // tslint:disable-next-line:no-any
 class Logged extends React.Component<any, any> {
     handleSignOut = () => {
-        return axios.get('/api/logout')
-        .then(res => {
-            if (res.status === 200) {
-                this.props.history.push('/');
-                this.props.store.clearUser();
-            } else {
-                alert(res.statusText);
-            }
+        return axios({
+            url: 'http://localhost:3001/api/v1/auth/logout',
+            withCredentials: true,
+        })
+        .then((res: AxiosResponse) => {
+            this.props.history.push('/');
+            this.props.currentUser.clearUser();
+        })
+        .catch((error: AxiosError) => {
+            alert(error.message);
         });
     }
 
@@ -90,4 +92,4 @@ class Logged extends React.Component<any, any> {
     }
 }
 
-export const $2 = withRouter(inject('store')(observer(Logged)));
+export const $2 = withRouter(inject('store', 'currentUser')(observer(Logged)));
