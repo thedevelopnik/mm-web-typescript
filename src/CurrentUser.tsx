@@ -1,10 +1,56 @@
 import { action, observable, useStrict } from 'mobx';
 import { merge } from 'ramda';
+import axios, { AxiosResponse } from 'axios';
+import * as translators from './Translators';
 
 useStrict(true);
 
 export interface MatchingProfile {
+    id?: number;
+    ageRanges: number[];
+    ageRangesWgt: number;
+    cals: number[];
+    calsWgt: number;
+    orgTypes: number[];
+    orgTypesWgt: number;
+    locTypes: number[];
+    locTypesWgt: number;
+    edTypes: number[];
+    edTypesWgt: number;
+    sizes: number[];
+    sizesWgt: number;
+    trainings: number[];
+    trainingsWgt: number;
+    traits: number[];
+    traitsWgt: number;
+    states: number[];
+    statesWgt: number;
+}
+
+export interface PartialMatchingProfile {
+    id?: number;
     ageRanges?: number[];
+    ageRangesWgt?: number;
+    cals?: number[];
+    calsWgt?: number;
+    orgTypes?: number[];
+    orgTypesWgt?: number;
+    locTypes?: number[];
+    locTypesWgt?: number;
+    edTypes?: number[];
+    edTypesWgt?: number;
+    sizes?: number[];
+    sizesWgt?: number;
+    trainings?: number[];
+    trainingsWgt?: number;
+    traits?: number[];
+    traitsWgt?: number;
+    states?: number[];
+    statesWgt?: number;
+}
+
+export interface TranslatedMatchingProfile {
+    ageRanges?: string[];
     ageRangesWgt?: number;
     cals?: string[];
     calsWgt?: number;
@@ -18,7 +64,7 @@ export interface MatchingProfile {
     sizesWgt?: number;
     trainings?: string[];
     trainingsWgt?: number;
-    traits?: number[];
+    traits?: string[];
     traitsWgt?: number;
     states?: string[];
     statesWgt?: number;
@@ -30,6 +76,11 @@ export interface Profile {
     active?: boolean;
     avatarUrl?: string;
     description?: string;
+    memberType?: string;
+    firstName?: string;
+    lastName?: string;
+    schoolName?: string;
+    email?: string;
 }
 
 export interface Match {
@@ -51,12 +102,15 @@ export interface User {
 export interface CurrentUser extends User {
     mpIndex: number;
     profile: Profile;
+    matchingProfile: MatchingProfile;
     loadInitialUser: (user: User) => {};
-    updateMatchingProfile: (newProps: MatchingProfile, index?: number) => {};
+    updateMatchingProfile: (newProps: PartialMatchingProfile, index?: number) => {};
     pushToMatchProfileArray: (name: string, value: string | number, index?: number) => {};
     removeFromMatchProfileArray: (name: string, value: string | number, index?: number) => {};
     updateProfile: (profile: Profile) => {};
     clearUser: () => {};
+    updateCurrentMatchProfileOnServer(): Promise<AxiosResponse>;
+    translatedMatchingProfile(n?: Number): TranslatedMatchingProfile;
 }
 
 export const currentUser: CurrentUser = observable({
@@ -88,6 +142,11 @@ export const currentUser: CurrentUser = observable({
         active: true,
         avatarUrl: '',
         description: '',
+        memberType: '',
+    },
+
+    get matchingProfile() {
+        return currentUser.matchingProfiles[currentUser.mpIndex];
     },
 
     loadInitialUser: action.bound(function _loadInitialUser({ matches, matchingProfiles, profile}: User) {
@@ -130,5 +189,25 @@ export const currentUser: CurrentUser = observable({
             description: '',
         };
         return {};
+    }),
+    translatedMatchingProfile: action.bound(function _translatedMatchingProfile(index: number = currentUser.mpIndex) {
+        const matchingProfile = currentUser.matchingProfiles[index];
+        return Reflect.ownKeys(matchingProfile)
+            .reduce((obj: TranslatedMatchingProfile, key: string) => {
+                if (translators[key]) {
+                    obj[key] = (matchingProfile[key] as number[]).map(translators[key]);
+                } else {
+                    obj[key] = matchingProfile;
+                }
+                return obj;
+            },      {});
+    }),
+    updateCurrentMatchProfileOnServer: action.bound(function _updateCurrentMatchProfileOnServer() {
+        return axios({
+            method: 'POST',
+            url: 'http://localhost:3001/api/v1/matchProfiles',
+            data: currentUser.matchingProfiles[currentUser.mpIndex],
+            withCredentials: true,
+        });
     })
 });

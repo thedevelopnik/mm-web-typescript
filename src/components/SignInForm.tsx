@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { inject, observer } from 'mobx-react';
 import * as validator from 'validator';
-import axios, { AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Store } from '../Store';
 import { User, CurrentUser } from '../CurrentUser';
 
