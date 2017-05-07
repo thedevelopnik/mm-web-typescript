@@ -1,11 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 interface State {
     numChecked: number;
@@ -20,12 +15,12 @@ const styles = {
     }
 };
 
-export default class TraitsTeacher extends React.Component<Props, State> {
+export default class TraitsTeacher extends React.Component<any, State> {
     state = {
         numChecked: 0
     };
 
-    handleAmbChecked = (event: Event, isInputChecked: boolean) => {
+    handleAmbChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 0);
             this.setState({
@@ -39,7 +34,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleHumChecked = (event: Event, isInputChecked: boolean) => {
+    handleHumChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 1);
             this.setState({
@@ -53,7 +48,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleColChecked = (event: Event, isInputChecked: boolean) => {
+    handleColChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 2);
             this.setState({
@@ -67,7 +62,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleIndChecked = (event: Event, isInputChecked: boolean) => {
+    handleIndChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 3);
             this.setState({
@@ -81,7 +76,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleExtChecked = (event: Event, isInputChecked: boolean) => {
+    handleExtChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 4);
             this.setState({
@@ -95,7 +90,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleIntChecked = (event: Event, isInputChecked: boolean) => {
+    handleIntChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 5);
             this.setState({
@@ -109,7 +104,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleArtChecked = (event: Event, isInputChecked: boolean) => {
+    handleArtChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 6);
             this.setState({
@@ -123,7 +118,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleMusChecked = (event: Event, isInputChecked: boolean) => {
+    handleMusChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 7);
             this.setState({
@@ -137,7 +132,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleCreChecked = (event: Event, isInputChecked: boolean) => {
+    handleCreChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 8);
             this.setState({
@@ -151,7 +146,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleOrgChecked = (event: Event, isInputChecked: boolean) => {
+    handleOrgChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 9);
             this.setState({
@@ -165,7 +160,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handlePlaChecked = (event: Event, isInputChecked: boolean) => {
+    handlePlaChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 10);
             this.setState({
@@ -179,7 +174,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleQuiChecked = (event: Event, isInputChecked: boolean) => {
+    handleQuiChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 11);
             this.setState({
@@ -193,7 +188,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleVerChecked = (event: Event, isInputChecked: boolean) => {
+    handleVerChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 12);
             this.setState({
@@ -207,7 +202,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleWriChecked = (event: Event, isInputChecked: boolean) => {
+    handleWriChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 13);
             this.setState({
@@ -221,7 +216,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleJoyChecked = (event: Event, isInputChecked: boolean) => {
+    handleJoyChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 14);
             this.setState({
@@ -235,7 +230,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleTecChecked = (event: Event, isInputChecked: boolean) => {
+    handleTecChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 15);
             this.setState({
@@ -249,7 +244,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleAnaChecked = (event: Event, isInputChecked: boolean) => {
+    handleAnaChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 16);
             this.setState({
@@ -263,7 +258,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handlePatChecked = (event: Event, isInputChecked: boolean) => {
+    handlePatChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 17);
             this.setState({
@@ -277,7 +272,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleSpoChecked = (event: Event, isInputChecked: boolean) => {
+    handleSpoChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 18);
             this.setState({
@@ -291,7 +286,7 @@ export default class TraitsTeacher extends React.Component<Props, State> {
         }
     }
 
-    handleRouChecked = (event: Event, isInputChecked: boolean) => {
+    handleRouChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('traits', 19);
             this.setState({

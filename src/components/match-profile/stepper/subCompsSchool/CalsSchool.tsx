@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,8 +11,8 @@ const styles = {
     }
 };
 
-export default class CalsSchool extends React.Component<Props, undefined> {
-    handleOnChange = (event: Event, value: number) => {
+export default class CalsSchool extends React.Component<any, undefined> {
+    handleOnChange = (event: React.FormEvent<string>, value: string) => {
         this.props.currentUser.updateMatchingProfile({
             cals: [value],
             calsWgt: 10

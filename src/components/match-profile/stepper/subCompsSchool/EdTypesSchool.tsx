@@ -1,12 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
-
 
 const styles = {
     block: {
@@ -17,8 +11,8 @@ const styles = {
     }
 };
 
-export default class EdTypesSchool extends React.Component<Props, undefined> {
-    handleNoChecked = (event: Event, isInputChecked: boolean) => {
+export default class EdTypesSchool extends React.Component<any, undefined> {
+    handleNoChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('edTypes', 0);
         } else {
@@ -26,7 +20,7 @@ export default class EdTypesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handleSomeChecked = (event: Event, isInputChecked: boolean) => {
+    handleSomeChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('edTypes', 1);
         } else {
@@ -34,7 +28,7 @@ export default class EdTypesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handleBachChecked = (event: Event, isInputChecked: boolean) => {
+    handleAssocChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('edTypes', 2);
         } else {
@@ -42,7 +36,7 @@ export default class EdTypesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handleMastChecked = (event: Event, isInputChecked: boolean) => {
+    handleBachChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('edTypes', 3);
         } else {
@@ -50,13 +44,22 @@ export default class EdTypesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handleDocChecked = (event: Event, isInputChecked: boolean) => {
+    handleMastChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('edTypes', 4);
         } else {
             this.props.currentUser.removeFromMatchProfileArray('edTypes', 4);
         }
     }
+
+    handleDocChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
+        if (isInputChecked) {
+            this.props.currentUser.pushToMatchProfileArray('edTypes', 5);
+        } else {
+            this.props.currentUser.removeFromMatchProfileArray('edTypes', 5);
+        }
+    }
+
 
     render() {
         return (
@@ -89,13 +92,13 @@ export default class EdTypesSchool extends React.Component<Props, undefined> {
                     label="Master's Degree"
                     style={styles.checkbox}
                     onCheck={this.handleMastChecked}
-                    checked={this.props.currentUser.matchingProfile.edTypes.includes(3)}
+                    checked={this.props.currentUser.matchingProfile.edTypes.includes(4)}
                 />
                 <Checkbox
                     label="Doctorate"
                     style={styles.checkbox}
                     onCheck={this.handleDocChecked}
-                    checked={this.props.currentUser.matchingProfile.edTypes.includes(3)}
+                    checked={this.props.currentUser.matchingProfile.edTypes.includes(5)}
                 />
             </div>
         );

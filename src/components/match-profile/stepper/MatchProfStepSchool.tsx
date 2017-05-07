@@ -196,7 +196,7 @@ class MatchProfileStepperSchool extends React.Component<Props, State> {
                             <p>
                                 What state is your school in?
                             </p>
-                            <StatesSchool />
+                            <StatesSchool/>
                             {this.renderStepActions(3)}
                         </StepContent>
                     </Step>
