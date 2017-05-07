@@ -2,11 +2,6 @@ import * as React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import Chip from 'material-ui/Chip';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 interface State {
     currentStates: number[];
@@ -16,7 +11,7 @@ interface State {
 /**
  * The input is used to create the `dataSource`, so the input always matches three entries.
  */
-export default class StatesSchool extends React.Component<Props, State> {
+export default class StatesSchool extends React.Component<any, State> {
     constructor() {
         super();
         this.state = {

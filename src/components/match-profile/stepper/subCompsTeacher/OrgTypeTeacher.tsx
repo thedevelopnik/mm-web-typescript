@@ -1,11 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,7 +11,7 @@ const styles = {
     }
 };
 
-export default class OrgTypeTeacher extends React.Component<Props, undefined> {
+export default class OrgTypeTeacher extends React.Component<any, undefined> {
     handlePubDistChecked = (event: Event, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 0);

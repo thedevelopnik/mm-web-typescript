@@ -1,11 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,8 +11,8 @@ const styles = {
     }
 };
 
-class AgesSchool extends React.Component<Props, undefined> {
-    handle03Checked = (event: Event, isInputChecked: boolean) => {
+class AgesSchool extends React.Component<any, undefined> {
+    handle03Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('ageRanges', 0);
         } else {
@@ -25,7 +20,7 @@ class AgesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handle36Checked = (event: Event, isInputChecked: boolean) => {
+    handle36Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('ageRanges', 1);
         } else {
@@ -33,7 +28,7 @@ class AgesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handle69Checked = (event: Event, isInputChecked: boolean) => {
+    handle69Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('ageRanges', 2);
         } else {
@@ -41,7 +36,7 @@ class AgesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handle912Checked = (event: Event, isInputChecked: boolean) => {
+    handle912Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('ageRanges', 3);
         } else {
@@ -49,7 +44,7 @@ class AgesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handle1215Checked = (event: Event, isInputChecked: boolean) => {
+    handle1215Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('ageRanges', 4);
         } else {
@@ -57,7 +52,7 @@ class AgesSchool extends React.Component<Props, undefined> {
         }
     }
 
-    handle1518Checked = (event: Event, isInputChecked: boolean) => {
+    handle1518Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('ageRanges', 5);
         } else {
