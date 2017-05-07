@@ -1,11 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,8 +11,8 @@ const styles = {
     }
 };
 
-export default class LocTypesTeacher extends React.Component<Props, undefined> {
-    handleUrbChecked = (event: Event, isInputChecked: boolean) => {
+export default class LocTypesTeacher extends React.Component<any, undefined> {
+    handleUrbChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('locTypes', 0);
         } else {
@@ -25,7 +20,7 @@ export default class LocTypesTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handleSubChecked = (event: Event, isInputChecked: boolean) => {
+    handleSubChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('locTypes', 1);
         } else {
@@ -33,7 +28,7 @@ export default class LocTypesTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handleSmaChecked = (event: Event, isInputChecked: boolean) => {
+    handleSmaChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('locTypes', 2);
         } else {
@@ -41,7 +36,7 @@ export default class LocTypesTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handleRurChecked = (event: Event, isInputChecked: boolean) => {
+    handleRurChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('locTypes', 3);
         } else {

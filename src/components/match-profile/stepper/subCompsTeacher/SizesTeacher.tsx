@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import Checkbox from 'material-ui/Checkbox';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,8 +11,8 @@ const styles = {
     }
 };
 
-export default class SizesTeacher extends React.Component<Props, undefined> {
-    handle4OrLessChecked = (event: Event, isInputChecked: boolean) => {
+export default class SizesTeacher extends React.Component<any, undefined> {
+    handle4OrLessChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('sizes', 0);
         } else {
@@ -25,7 +20,7 @@ export default class SizesTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handle5To9Checked = (event: Event, isInputChecked: boolean) => {
+    handle5To9Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('sizes', 1);
         } else {
@@ -33,7 +28,7 @@ export default class SizesTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handle10To19Checked = (event: Event, isInputChecked: boolean) => {
+    handle10To19Checked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('sizes', 2);
         } else {
@@ -41,7 +36,7 @@ export default class SizesTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handle20OrMoreChecked = (event: Event, isInputChecked: boolean) => {
+    handle20OrMoreChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('sizes', 3);
         } else {

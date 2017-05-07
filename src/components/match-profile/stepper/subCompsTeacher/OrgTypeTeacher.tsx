@@ -1,11 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,8 +11,8 @@ const styles = {
     }
 };
 
-export default class OrgTypeTeacher extends React.Component<Props, undefined> {
-    handlePubDistChecked = (event: Event, isInputChecked: boolean) => {
+export default class OrgTypeTeacher extends React.Component<any, undefined> {
+    handlePubDistChecked = (event: React.FormEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 0);
         } else {
@@ -25,7 +20,7 @@ export default class OrgTypeTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handlePubMagChecked = (event: Event, isInputChecked: boolean) => {
+    handlePubMagChecked = (event: React.FormEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 1);
         } else {
@@ -33,7 +28,7 @@ export default class OrgTypeTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handlePubChartChecked = (event: Event, isInputChecked: boolean) => {
+    handlePubChartChecked = (event: React.FormEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 2);
         } else {
@@ -41,7 +36,7 @@ export default class OrgTypeTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handlePubInnoChecked = (event: Event, isInputChecked: boolean) => {
+    handlePubInnoChecked = (event: React.FormEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 3);
         } else {
@@ -49,7 +44,7 @@ export default class OrgTypeTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handlePrivForSingleChecked = (event: Event, isInputChecked: boolean) => {
+    handlePrivForSingleChecked = (event: React.FormEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 4);
         } else {
@@ -57,7 +52,7 @@ export default class OrgTypeTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handlePrivForCorpChecked = (event: Event, isInputChecked: boolean) => {
+    handlePrivForCorpChecked = (event: React.FormEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 5);
         } else {
@@ -65,7 +60,7 @@ export default class OrgTypeTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handlePrivNonChecked = (event: Event, isInputChecked: boolean) => {
+    handlePrivNonChecked = (event: React.FormEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('orgTypes', 6);
         } else {

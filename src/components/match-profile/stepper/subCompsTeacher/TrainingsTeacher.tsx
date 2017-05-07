@@ -1,11 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,8 +11,8 @@ const styles = {
     }
 };
 
-export default class TrainingsTeacher extends React.Component<Props, undefined> {
-    handleAMIChecked = (event: Event, isInputChecked: boolean) => {
+export default class TrainingsTeacher extends React.Component<any, undefined> {
+    handleAMIChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('trainings', 0);
         } else {
@@ -25,7 +20,7 @@ export default class TrainingsTeacher extends React.Component<Props, undefined> 
         }
     }
 
-    handleAMSChecked = (event: Event, isInputChecked: boolean) => {
+    handleAMSChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('trainings', 1);
         } else {
@@ -33,7 +28,7 @@ export default class TrainingsTeacher extends React.Component<Props, undefined> 
         }
     }
 
-    handleMCIChecked = (event: Event, isInputChecked: boolean) => {
+    handleMCIChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('trainings', 2);
         } else {
@@ -41,7 +36,7 @@ export default class TrainingsTeacher extends React.Component<Props, undefined> 
         }
     }
 
-    handleSNMChecked = (event: Event, isInputChecked: boolean) => {
+    handleSNMChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('trainings', 3);
         } else {
@@ -49,7 +44,7 @@ export default class TrainingsTeacher extends React.Component<Props, undefined> 
         }
     }
 
-    handleCGSChecked = (event: Event, isInputChecked: boolean) => {
+    handleCGSChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('trainings', 4);
         } else {
@@ -57,7 +52,7 @@ export default class TrainingsTeacher extends React.Component<Props, undefined> 
         }
     }
 
-    handleOtherChecked = (event: Event, isInputChecked: boolean) => {
+    handleOtherChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('trainings', 5);
         } else {

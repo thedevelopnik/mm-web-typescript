@@ -1,11 +1,6 @@
 import * as React from 'react';
 import Checkbox from 'material-ui/Checkbox';
 import { inject, observer } from 'mobx-react';
-import { CurrentUser } from '../../../../CurrentUser';
-
-interface Props {
-    currentUser: CurrentUser;
-}
 
 const styles = {
     block: {
@@ -16,8 +11,8 @@ const styles = {
     }
 };
 
-class CalsTeacher extends React.Component<Props, undefined> {
-    handleTraditionalChecked = (event: Event, isInputChecked: boolean) => {
+class CalsTeacher extends React.Component<any, undefined> {
+    handleTraditionalChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('cals', 0);
         } else {
@@ -25,7 +20,7 @@ class CalsTeacher extends React.Component<Props, undefined> {
         }
     }
 
-    handleYearRoundChecked = (event: Event, isInputChecked: boolean) => {
+    handleYearRoundChecked = (event: React.MouseEvent<{}>, isInputChecked: boolean) => {
         if (isInputChecked) {
             this.props.currentUser.pushToMatchProfileArray('cals', 1);
         } else {
