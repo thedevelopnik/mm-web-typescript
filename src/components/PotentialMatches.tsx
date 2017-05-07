@@ -3,19 +3,9 @@ import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import { inject, observer } from 'mobx-react';
-import { Store } from '../Store';
-import { CurrentUser } from '../CurrentUser';
+import { Match } from '../CurrentUser';
 
-export interface Props {
-  store: Store;
-  currentUser: CurrentUser;
-}
-
-class PotentialMatches extends React.Component<Props, undefined> {
-    constructor(props: Props) {
-        super(props);
-    }
-
+class PotentialMatches extends React.Component<any, undefined> {
     render() {
         return (
             <List>
@@ -28,7 +18,7 @@ class PotentialMatches extends React.Component<Props, undefined> {
                         </p>
                     )
                     : this.props.currentUser.matches.map(
-                            potentialMatch => {
+                            (potentialMatch: Match) => {
                                 const random = Math.random();
                                 return (
                                     <div key={random}>

@@ -30,6 +30,10 @@ export interface Props {
   currentUser: CurrentUser;
 }
 
+const style = {
+    className: 'flex-item'
+};
+
 class Profile extends React.Component<Props, undefined> {
     constructor(props: Props) {
         super(props);
@@ -66,7 +70,7 @@ class Profile extends React.Component<Props, undefined> {
                         </p>
                     </CardText>
                     <CardText className="flex-container">
-                        <List className="flex-item">
+                        <List style={style}>
                             <Subheader>My Info</Subheader>
                             <ListItem
                                 primaryText={profile.displayName}
@@ -115,7 +119,7 @@ class Profile extends React.Component<Props, undefined> {
                                 )
                                 : (
                                     <div>
-                                        <List className="flex-item">
+                                        <List style={style}>
                                             <Subheader>
                                                 Matching Profile
                                             </Subheader>

@@ -12,8 +12,6 @@ import { $ as TraitsTeacher } from './subCompsTeacher/TraitsTeacher';
 import { $ as LocTypesTeacher } from './subCompsTeacher/LocTypesTeacher';
 import { $ as EdTypesTeacher } from './subCompsTeacher/EdTypesTeacher';
 import { inject, observer } from 'mobx-react';
-import { Store } from '../../../Store';
-import { CurrentUser } from '../../../CurrentUser';
 import * as translators from '../../../Translators';
 
 interface State {
@@ -21,12 +19,7 @@ interface State {
     stepIndex: number;
 }
 
-interface Props {
-    store: Store;
-    currentUser: CurrentUser;
-}
-
-export default class MatchProfileStepperTeacher extends React.Component<Props, State> {
+export default class MatchProfileStepperTeacher extends React.Component<any, State> {
     state = {
         finished: false,
         stepIndex: 0

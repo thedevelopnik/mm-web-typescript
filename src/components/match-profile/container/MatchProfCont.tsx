@@ -4,15 +4,8 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import { $ as MatchProfileStepperSchool } from '../stepper/MatchProfStepSchool';
 import { $ as MatchProfileStepperTeacher } from '../stepper/MatchProfStepTeacher';
-import { Store } from '../../../Store';
-import { CurrentUser } from '../../../CurrentUser';
 
-export interface Props {
-  store: Store;
-  currentUser: CurrentUser;
-}
-
-const MatchProfileContainer = function MatchProfileContainer(props: Props) {
+const MatchProfileContainer = function MatchProfileContainer(props: any) {
     const actions = [
         (
             <FlatButton
