@@ -3,6 +3,7 @@ import { Toolbar, ToolbarTitle, ToolbarGroup } from 'material-ui/Toolbar';
 import { $ as FAQ } from './FAQ';
 import { $ as RegisterForm } from './RegisterForm';
 import { $ as SignInForm } from './SignInForm';
+import { $ as Terms } from './Terms';
 import FlatButton from 'material-ui/FlatButton';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { inject, observer } from 'mobx-react';
@@ -32,6 +33,10 @@ class Header extends React.Component<any, {}> {
         this.props.store.openSignIn();
     }
 
+    openTerms = () => {
+        this.props.store.openTerms();
+    }
+
     render() {
         return (
             <Toolbar className="sticky">
@@ -45,11 +50,12 @@ class Header extends React.Component<any, {}> {
                         onTouchTap={this.openFAQ}
                     />
                     <FlatButton label="Contact" />
-                    <FlatButton label="Terms" />
+                    <FlatButton label="Terms" onTouchTap={this.openTerms}/>
                     <FlatButton label="Sign In" onTouchTap={this.openSignIn}/>
                     <FAQ />
                     <RegisterForm />
                     <SignInForm />
+                    <Terms />
                 </ToolbarGroup>
             </Toolbar>
         );

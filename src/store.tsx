@@ -9,6 +9,9 @@ export interface Store {
     faqIsOpen: boolean;
     registerIsOpen: boolean;
     matchProfContIsOpen: boolean;
+    termsIsOpen: boolean;
+    openTerms: () => {};
+    closeTerms: () => {};
     closeSignIn: () => {};
     openSignIn: () => {};
     openFaq: () => {};
@@ -51,6 +54,16 @@ export const store: Store = observable({
     }),
     closeFaq: action.bound(function _closeFaq() {
         store.faqIsOpen = false;
+        return {};
+    }),
+
+    termsIsOpen: false,
+    openTerms: action.bound(function _openTerms() {
+        store.termsIsOpen = true;
+        return {};
+    }),
+    closeTerms: action.bound(function _closeTerms() {
+        store.termsIsOpen = false;
         return {};
     }),
 
