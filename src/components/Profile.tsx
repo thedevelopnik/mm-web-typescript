@@ -31,7 +31,7 @@ export interface Props {
 }
 
 const style = {
-    className: 'flex-item'
+    className: 'flex-item-horizontal'
 };
 
 class Profile extends React.Component<Props, undefined> {
@@ -57,7 +57,7 @@ class Profile extends React.Component<Props, undefined> {
                         title={profile.name}
                         avatar={<Avatar icon={<AccountCircle />} />}
                     />
-                    <CardText className="flex-container">
+                    <CardText className="flex-container-horizontal">
                         <p>
                             Thank you for being an early adopter of Montessori Match!
                         </p>
@@ -69,7 +69,7 @@ class Profile extends React.Component<Props, undefined> {
                             Please email us at hello@montessorimatch.com with any suggestions you have.
                         </p>
                     </CardText>
-                    <CardText className="flex-container">
+                    <CardText className="flex-container-horizontal">
                         <List style={style}>
                             <Subheader>My Info</Subheader>
                             <ListItem
@@ -101,7 +101,7 @@ class Profile extends React.Component<Props, undefined> {
                         <div>
                             {!translatedMatchingProfile.ageRanges
                                 ? (
-                                    <div className="flex-item">
+                                    <div className="flex-item-horizontal">
                                         <p>
                                             Looking a little sparse here, huh?
                                         </p>
@@ -181,7 +181,7 @@ class Profile extends React.Component<Props, undefined> {
                                     </div>
                                 )}
                         </div>
-                        <PotentialMatches className="flex-item" />
+                        <PotentialMatches className="flex-item-horizontal" />
                     </CardText>
                     <MatchProfileContainer
                         updateProfile={this.updateIt.bind(this)}

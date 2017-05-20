@@ -5,8 +5,8 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { Link, withRouter } from 'react-router-dom';
 import FaceIcon from 'material-ui/svg-icons/action/face';
-import { registerForm as RegisterForm } from './RegisterForm';
-import SignInForm from './SignInForm';
+import { $ as RegisterForm } from './RegisterForm';
+import { $ as SignInForm } from './SignInForm';
 import { inject, observer } from 'mobx-react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 

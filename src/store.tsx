@@ -6,10 +6,16 @@ export interface Store {
     id: number;
     memberType: string;
     signInIsOpen: boolean;
+    faqIsOpen: boolean;
     registerIsOpen: boolean;
     matchProfContIsOpen: boolean;
+    termsIsOpen: boolean;
+    openTerms: () => {};
+    closeTerms: () => {};
     closeSignIn: () => {};
     openSignIn: () => {};
+    openFaq: () => {};
+    closeFaq: () => {};
     closeRegister: () => {};
     openRegister: () => {};
     closeMatchProfCont: () => {};
@@ -38,6 +44,26 @@ export const store: Store = observable({
     }),
     openSignIn: action.bound(function _openSignIn() {
         store.signInIsOpen = true;
+        return {};
+    }),
+
+    faqIsOpen: false,
+    openFaq: action.bound(function _openFaq() {
+        store.faqIsOpen = true;
+        return {};
+    }),
+    closeFaq: action.bound(function _closeFaq() {
+        store.faqIsOpen = false;
+        return {};
+    }),
+
+    termsIsOpen: false,
+    openTerms: action.bound(function _openTerms() {
+        store.termsIsOpen = true;
+        return {};
+    }),
+    closeTerms: action.bound(function _closeTerms() {
+        store.termsIsOpen = false;
         return {};
     }),
 

@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { Header } from '../Header';
+import { $ as Header } from '../Header';
+import { Home } from '../Home/Home';
 import { State } from '../../interfaces';
+import { Route, Switch } from 'react-router-dom';
+import './App.css';
 
 // tslint:disable-next-line:no-any
 export class App extends React.Component<any, State> {
@@ -8,7 +11,9 @@ export class App extends React.Component<any, State> {
         return (
             <div>
                 <Header />
-                {this.props.children}
+                <Switch>
+                    <Route exact={true} path="/" component={Home} />
+                </Switch>
             </div>
         );
     }

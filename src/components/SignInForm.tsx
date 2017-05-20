@@ -5,8 +5,7 @@ import TextField from 'material-ui/TextField';
 import { inject, observer } from 'mobx-react';
 import * as validator from 'validator';
 import axios, { AxiosResponse } from 'axios';
-import { Store } from '../Store';
-import { User, CurrentUser } from '../CurrentUser';
+import { User } from '../CurrentUser';
 
 const styles = {
   title: {
@@ -33,13 +32,8 @@ export interface LoginState {
   passError: string | boolean;
 }
 
-export interface Props {
-  store: Store;
-  currentUser: CurrentUser;
-}
-
-class SignInForm extends React.Component<Props, LoginState> {
-  constructor(props: Props) {
+class SignInForm extends React.Component<any, LoginState> {
+  constructor(props: any) {
     super(props);
     this.state = {
       email: ``,
@@ -124,7 +118,7 @@ class SignInForm extends React.Component<Props, LoginState> {
         <Dialog
           title="Sign In"
           actions={actions}
-          modal={false}
+          modal={true}
           open={this.props.store.signInIsOpen}
         >
           Welcome!
@@ -159,4 +153,4 @@ class SignInForm extends React.Component<Props, LoginState> {
   }
 }
 
-export default inject('currentUser', 'store')(observer(SignInForm));
+export const $ =  inject('currentUser', 'store')(observer(SignInForm));

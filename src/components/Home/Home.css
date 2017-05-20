@@ -1,0 +1,43 @@
+.hero {
+    max-width: 70%;
+    max-height: 60%;
+    margin: 2rem auto 0 auto;
+    display: block;
+}
+
+h1 {
+    text-align: center;
+}
+
+.all-around-margin {
+    margin: 2.5rem 5% 2.5rem 5%;
+}
+
+.flex-container-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  align-content: center;
+  margin: 2.5rem 0 2.5rem 0
+}
+
+.flex-item-horizontal {
+  width: 40%;
+}
+
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flex-item-vertical {
+    margin: 0 auto 1.25rem auto;
+}
+
+.mailing-list {
+    margin: 0 auto 5% auto;
+    width: 400px;
+    display: block;
+}
