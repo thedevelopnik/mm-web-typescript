@@ -211,7 +211,7 @@ class RegisterForm extends React.Component<any, SignUpObject> {
         <Dialog
           title="Sign Up"
           actions={actions}
-          modal={false}
+          modal={true}
           open={this.props.store.registerIsOpen}
           onRequestClose={this.createNewUser}
         >
@@ -374,4 +374,4 @@ class RegisterForm extends React.Component<any, SignUpObject> {
   }
 }
 
-export const registerForm = withRouter(inject('store')(observer(RegisterForm)));
+export const $ = withRouter(inject('store')(observer(RegisterForm)));

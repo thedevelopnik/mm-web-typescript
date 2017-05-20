@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { $2 as Logged, $1 as Login } from './LoginMenus';
-import { MainMenu } from './MainMenu';
-import AppBar from 'material-ui/AppBar';
+import { Toolbar, ToolbarTitle, ToolbarGroup } from 'material-ui/Toolbar';
+import { $ as FAQ } from './FAQ';
+import { $ as RegisterForm } from './RegisterForm';
+import { $ as SignInForm } from './SignInForm';
+import FlatButton from 'material-ui/FlatButton';
 import axios, { AxiosResponse, AxiosError } from 'axios';
+import { inject, observer } from 'mobx-react';
 
 // tslint:disable-next-line:no-any
-export class Header extends React.Component<any, {logged: boolean}> {
-    state = {
-        logged: false
-    };
+class Header extends React.Component<any, {}> {
 
     componentWillMount() {
         axios({
@@ -24,13 +24,36 @@ export class Header extends React.Component<any, {logged: boolean}> {
         });
     }
 
+    openFAQ = () => {
+        this.props.store.openFaq();
+    }
+
+    openSignIn = () => {
+        this.props.store.openSignIn();
+    }
+
     render() {
         return (
-            <AppBar
-                title="Montessori Match"
-                iconElementLeft={<MainMenu />}
-                iconElementRight={this.state.logged ? <Logged /> : <Login />}
-            />
+            <Toolbar className="sticky">
+                <ToolbarGroup>
+                    <ToolbarTitle text="Montessori Match" />
+                </ToolbarGroup>
+                <ToolbarGroup>
+                    <FlatButton label="About" />
+                    <FlatButton
+                        label="FAQ"
+                        onTouchTap={this.openFAQ}
+                    />
+                    <FlatButton label="Contact" />
+                    <FlatButton label="Terms" />
+                    <FlatButton label="Sign In" onTouchTap={this.openSignIn}/>
+                    <FAQ />
+                    <RegisterForm />
+                    <SignInForm />
+                </ToolbarGroup>
+            </Toolbar>
         );
     }
 }
+
+export const $ = inject('store')(observer(Header));
