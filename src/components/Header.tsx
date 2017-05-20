@@ -41,17 +41,18 @@ class Header extends React.Component<any, {}> {
         return (
             <Toolbar className="sticky">
                 <ToolbarGroup>
-                    <ToolbarTitle text="Montessori Match" />
+                    <ToolbarTitle text="Montessori Match" style={{color: '#40abfc'}} />
                 </ToolbarGroup>
                 <ToolbarGroup>
-                    <FlatButton label="About" />
+                    <FlatButton label="About" primary={true} />
                     <FlatButton
                         label="FAQ"
                         onTouchTap={this.openFAQ}
+                        primary={true}
                     />
-                    <FlatButton label="Contact" />
-                    <FlatButton label="Terms" onTouchTap={this.openTerms}/>
-                    <FlatButton label="Sign In" onTouchTap={this.openSignIn}/>
+                    <FlatButton label="Contact" primary={true} />
+                    <FlatButton label="Terms" onTouchTap={this.openTerms} primary={true} />
+                    <FlatButton label="Sign In" onTouchTap={this.openSignIn} primary={true} />
                     <FAQ />
                     <RegisterForm />
                     <SignInForm />

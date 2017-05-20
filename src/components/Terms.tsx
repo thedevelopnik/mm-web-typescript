@@ -27,6 +27,9 @@ class Terms extends React.Component<any, {}> {
                 modal={true}
                 autoScrollBodyContent={true}
                 actions={actions}
+                titleStyle={{
+                    color: '#000074'
+                }}
             >
                 <br />
                 <p>

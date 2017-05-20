@@ -12,7 +12,7 @@ class ForTeachers extends React.Component<any, {}> {
 
     render() {
         return (
-            <div className="flex-item">
+            <div className="flex-item-horizontal">
                 <Card>
                     <CardMedia>
                         <img className="panel-img" src={IAmTeacher} />
@@ -26,7 +26,7 @@ class ForTeachers extends React.Component<any, {}> {
                         </p>
                     </CardText>
                     <CardActions>
-                        <RaisedButton label="Build Profile" onTouchTap={this.openRegister}/>
+                        <RaisedButton label="Build Profile" onTouchTap={this.openRegister} secondary={true}/>
                     </CardActions>
                 </Card>
             </div>

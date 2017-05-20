@@ -7,6 +7,7 @@ body {
 
  h1,  h2,  h3,  p {
   margin: 0;
+  color: #40abfc;
 }
  hr {
   border-bottom: 1px solid #DDD;
@@ -16,7 +17,7 @@ body {
   margin: 1.5em 0;
 }
  p {
-  color: #333;
+  color: #000074;
   line-height: 1.5em;
 }
  a {

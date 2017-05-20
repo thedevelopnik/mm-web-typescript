@@ -27,6 +27,9 @@ class FAQ extends React.Component<any, {}> {
                 modal={true}
                 autoScrollBodyContent={true}
                 actions={actions}
+                titleStyle={{
+                    color: '#000074'
+                }}
             >
                 <br />
                 <h3>Who is Montessori Match for?</h3>
