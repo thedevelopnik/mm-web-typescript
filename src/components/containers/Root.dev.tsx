@@ -13,7 +13,7 @@ export class Root extends React.Component<{}, null> {
                 <BrowserRouter>
                     <div>
                         <DevTools />
-                        <Route exact={true} path="/" component={App} />
+                        <Route path="/" component={App} />
                     </div>
                 </BrowserRouter>
             </Provider>

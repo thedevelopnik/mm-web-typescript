@@ -21,7 +21,7 @@ injectTapEventPlugin();
 
 ReactDOM.render(
     <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-        {env === 'dev' ? <Dev /> : <Prod />}
+        {env === 'production' ? <Prod /> : <Dev />}
     </MuiThemeProvider>,
     document.getElementById('root') as HTMLElement
 );

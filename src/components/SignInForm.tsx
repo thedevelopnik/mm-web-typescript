@@ -3,6 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import { inject, observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import * as validator from 'validator';
 import axios, { AxiosResponse } from 'axios';
 import { User } from '../CurrentUser';
@@ -53,6 +54,7 @@ class SignInForm extends React.Component<any, LoginState> {
     .then((res: AxiosResponse) => {
       this.props.currentUser.loadInitialUser(res.data as User);
       this.props.store.closeSignIn();
+      this.props.history.push('/profile');
     })
     .catch((error: string) => {
       this.setState({ passError: 'Invalid email or password' });
@@ -153,4 +155,4 @@ class SignInForm extends React.Component<any, LoginState> {
   }
 }
 
-export const $ =  inject('currentUser', 'store')(observer(SignInForm));
+export const $ =  withRouter(inject('currentUser', 'store')(observer(SignInForm)));

@@ -10,7 +10,7 @@ export class Root extends React.Component<{}, null> {
         return (
             <Provider store={store} currentUser={currentUser}>
                 <BrowserRouter>
-                    <Route exact={true} path="/" component={App} />
+                    <Route path="/" component={App} />
                 </BrowserRouter>
             </Provider>
         );

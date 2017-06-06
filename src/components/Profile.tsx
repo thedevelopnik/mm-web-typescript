@@ -20,26 +20,21 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { $ as MatchProfileContainer } from './match-profile/container/MatchProfCont';
 import { $ as PotentialMatches } from './PotentialMatches';
 import { inject, observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
-import './Profile.css';
-import { Store } from '../Store';
-import { CurrentUser } from '../CurrentUser';
-
-export interface Props {
-  store: Store;
-  currentUser: CurrentUser;
-}
 
 const style = {
     className: 'flex-item-horizontal'
 };
 
-class Profile extends React.Component<Props, undefined> {
-    constructor(props: Props) {
+class Profile extends React.Component<any, any> {
+    constructor(props: any) {
         super(props);
-        if (!props.currentUser.profile.memberType) {
-            // browserHistory.push('/'); // I have no idea how react router works.
+        if (!props.currentUser.profile.id) {
+            console.log('fucking a');
+            this.props.history.push('/');
         }
+        console.log('fucking a');
     }
 
     updateIt() {
@@ -184,7 +179,7 @@ class Profile extends React.Component<Props, undefined> {
                         <PotentialMatches className="flex-item-horizontal" />
                     </CardText>
                     <MatchProfileContainer
-                        updateProfile={this.updateIt.bind(this)}
+                        updateProfile={this.updateIt}
                     />
                 </Card>
             </div>
@@ -192,4 +187,4 @@ class Profile extends React.Component<Props, undefined> {
     }
 }
 
-export default inject('currentUser', 'menus')(observer(Profile));
+export const $ = withRouter(inject('currentUser', 'menus')(observer(Profile)));
